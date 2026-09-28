@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
-const mono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
+// 1. Import Navbar yang baru dibuat
+import Navbar from "@/components/layout/Navbar";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CaesarCipher — Interactive Playground",
-  description:
-    "Pelajari cara kerja sandi substitusi paling ikonik dalam sejarah secara interaktif.",
+  title: "Caesar Cipher Platform",
+  description: "Educational platform for cryptography",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="id" className={mono.variable}>
-      <body className="bg-zinc-950 text-white antialiased">
+    <html lang="id">
+      <body className={inter.className}>
+
+        {/* 2. Taruh Navbar di atas children */}
         <Navbar />
-        <main>{children}</main>
-        <Footer />
+
+        {/* 3. Anak-anak elemen (konten halaman) otomatis akan menyesuaikan */}
+        {children}
+
       </body>
     </html>
   );
