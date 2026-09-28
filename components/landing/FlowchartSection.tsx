@@ -71,37 +71,42 @@ export default function FlowchartSection() {
               Dekripsi
             </span>
           </button>        </div>
-        {/* Steps — membentang penuh lebar container */}
-        <div className="grid grid-cols-6 gap-0 w-full">
-          {steps.map((step, i) => (
-            <div key={i} className="flex items-center">
-              {/* Kotak step */}
-              <div className="group relative flex-1">
-                <div
-                  className={`flex flex-col items-center justify-center text-center px-2 py-5 h-24 border transition-colors cursor-default
-                    ${step.highlight
-                      ? "border-red-600 bg-red-950/40"
-                      : "border-zinc-700 bg-zinc-950 hover:border-zinc-500"
-                    }
-                    ${i === 0 ? "rounded-l" : ""}
-                    ${i === steps.length - 1 ? "rounded-r" : ""}
-                  `}
-                >
-                  <span className="text-red-400 font-mono text-xs font-bold">{step.icon}</span>
-                  <span className="text-white text-xs mt-1.5 leading-tight">{step.label}</span>
-                </div>
-                {/* Tooltip */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-40 bg-zinc-800 border border-zinc-700 rounded px-2 py-1.5 text-xs text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-center">
-                  {step.desc}
-                </div>
-              </div>
+        {/* Steps — dibungkus dengan overflow-x-auto agar bisa di-scroll di HP */}
+        <div className="w-full overflow-x-auto pb-6 scrollbar-hide">
 
-              {/* Panah antar kotak */}
-              {i < steps.length - 1 && (
-                <span className="text-zinc-600 text-sm px-1 shrink-0">→</span>
-              )}
-            </div>
-          ))}
+          {/* min-w-[768px] memastikan flowchart tidak menyempit/rusak di HP, 
+              melainkan mempertahankan ukuran aslinya dan bisa di-geser */}
+          <div className="grid grid-cols-6 gap-0 w-full min-w-[768px] md:min-w-full">
+            {steps.map((step, i) => (
+              <div key={i} className="flex items-center">
+                {/* Kotak step */}
+                <div className="group relative flex-1">
+                  <div
+                    className={`flex flex-col items-center justify-center text-center px-2 py-5 h-24 border transition-colors cursor-default
+                      ${step.highlight
+                        ? "border-red-600 bg-red-950/40"
+                        : "border-zinc-700 bg-zinc-950 hover:border-zinc-500"
+                      }
+                      ${i === 0 ? "rounded-l" : ""}
+                      ${i === steps.length - 1 ? "rounded-r" : ""}
+                    `}
+                  >
+                    <span className="text-red-400 font-mono text-xs font-bold">{step.icon}</span>
+                    <span className="text-white text-xs mt-1.5 leading-tight">{step.label}</span>
+                  </div>
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-40 bg-zinc-800 border border-zinc-700 rounded px-2 py-1.5 text-xs text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-center">
+                    {step.desc}
+                  </div>
+                </div>
+
+                {/* Panah antar kotak */}
+                {i < steps.length - 1 && (
+                  <span className="text-zinc-600 text-sm px-1 shrink-0">→</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Tips — tanpa emoji */}
