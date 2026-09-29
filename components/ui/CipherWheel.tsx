@@ -248,8 +248,7 @@ export default function CipherWheel({ shift, onChangeShift }: CipherWheelProps) 
       ref={canvasRef}
       width={320}
       height={320}
-      className="max-w-full h-auto cursor-grab active:cursor-grabbing touch-none"
-      style={{ width: "320px", height: "320px", maxWidth: "100%" }}
+      className="w-full max-w-[320px] aspect-square mx-auto cursor-grab active:cursor-grabbing touch-none"
       aria-label={`Cipher wheel dengan shift ${shift}`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}

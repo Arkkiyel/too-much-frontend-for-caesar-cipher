@@ -49,14 +49,12 @@ export default function WheelVisualizer({
       <div className="grid md:grid-cols-2 gap-8 items-center pt-2">
 
         {/* Sisi Kiri: Cipher Wheel Canvas */}
-        <div className="flex justify-center items-center">
-          {/* Kita memanggil komponen CipherWheel yang sudah Anda buat sebelumnya */}
+        <div className="flex justify-center items-center w-full max-w-[350px] mx-auto aspect-square shrink-0">
           <CipherWheel
             shift={shift}
-            onChangeShift={setShift} // <-- 3. SEKARANG INI AKAN BERFUNGSI
+            onChangeShift={setShift}
           />
         </div>
-
         {/* Sisi Kanan: Korelasi Saat Ini & Legend */}
         <div className="flex flex-col gap-10">
 
