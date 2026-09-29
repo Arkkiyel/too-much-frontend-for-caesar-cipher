@@ -1,31 +1,40 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// 1. Import Navbar yang baru dibuat
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer"; // <-- 1. Import Footer ditambahkan
 
-const inter = Inter({ subsets: ["latin"] });
+const mono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
-  title: "Caesar Cipher Platform",
-  description: "Educational platform for cryptography",
+  title: "CaesarCipher — Interactive Playground",
+  description:
+    "Pelajari cara kerja sandi substitusi paling ikonik dalam sejarah secara interaktif.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="id">
-      <body className={inter.className}>
+    <html lang="id" className={mono.variable}>
+      {/* 2. Class ditambahkan: overflow-x-hidden (mencegah bocor) & flexbox (mendorong footer) */}
+      <body className="bg-zinc-950 text-white antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-        {/* 2. Taruh Navbar di atas children */}
         <Navbar />
 
-        {/* 3. Anak-anak elemen (konten halaman) otomatis akan menyesuaikan */}
-        {children}
+        {/* 3. flex-1 membuat area konten utama membesar, mendorong footer ke paling bawah */}
+        <div className="flex-1">
+          {children}
+        </div>
+
+        {/* 4. Footer dimunculkan di sini */}
+        <Footer />
 
       </body>
     </html>
