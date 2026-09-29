@@ -16,6 +16,7 @@ const decryptSteps = [
   { icon: "12", label: "Ubah ke Angka", desc: "Setiap huruf cipher dikonversi ke posisi alfabet" },
   { icon: "−n", label: "Kurangi Key", desc: "Posisi huruf dikurangi dengan nilai kunci n" },
   { icon: "%26", label: "Modulo 26", desc: "Hasil dibungkus kembali ke rentang 0–25" },
+  { icon: "AB", label: "Ubah ke Huruf", desc: "Angka dikonversi kembali menjadi huruf alfabet" },
   { icon: "T", label: "Plaintext", desc: "Teks asli berhasil dipulihkan", highlight: true },
 ];
 
@@ -34,9 +35,8 @@ export default function FlowchartSection() {
               Flowchart Proses {mode === "enkripsi" ? "Enkripsi" : "Dekripsi"}
             </h2>
             <p className="text-zinc-400 text-sm mt-1">
-              {mode === "enkripsi"
-                ? "Dari pesan terbaca menjadi ciphertext dalam enam tahap deterministik."
-                : "Dari ciphertext dipulihkan kembali menjadi pesan asli dalam lima tahap."}
+              {/* Deskripsi disamakan menjadi enam tahap karena sekarang jumlah kotaknya sama */}
+              Dari pesan terbaca menjadi ciphertext dalam enam tahap deterministik.
             </p>
           </div>
 
@@ -68,11 +68,8 @@ export default function FlowchartSection() {
 
         {/* Steps */}
         <div className="w-full overflow-x-auto pb-6 scrollbar-hide">
-          {/* Grid disesuaikan dinamis: 6 kolom untuk enkripsi, 5 kolom untuk dekripsi */}
-          <div
-            className={`grid gap-0 w-full min-w-[768px] md:min-w-full ${steps.length === 6 ? "grid-cols-6" : "grid-cols-5"
-              }`}
-          >
+          {/* Karena keduanya 6 kotak, kita kunci di grid-cols-6 */}
+          <div className="grid grid-cols-6 gap-0 w-full min-w-[768px] md:min-w-full">
             {steps.map((step, i) => (
               <div key={i} className="flex items-center">
                 {/* Kotak step */}
