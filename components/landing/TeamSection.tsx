@@ -2,7 +2,7 @@ const members = [
   { name: "Dhimas Arya Cahya Nugraha", nim: "25/559844/PA/23548" },
   { name: "Hajar Mutmainnah Muallif", nim: "25/561559/PA/23674" },
   { name: "Andika Wahyu Dwi Saputra", nim: "25/557882/PA/23452" },
-  { name: "Nabil Adriansyah", nim: "25/561604/NPA/20041" },
+  { name: "Nabil Adriansyah", nim: "26/561604/NPA/20041" },
   { name: "Gusti Rayna", nim: "25/557884/PA/23446" },
 ];
 
@@ -13,7 +13,7 @@ export default function TeamSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white">Dibalik Proyek Ini</h2>
           <p className="text-zinc-400 text-sm mt-3">
-            Empat peran, satu tujuan: membuat konsep kriptografi klasik terasa
+            Lima peran, satu tujuan: membuat konsep kriptografi klasik terasa
             visual, logis, dan menyenangkan untuk dipelajari.
           </p>
         </div>
